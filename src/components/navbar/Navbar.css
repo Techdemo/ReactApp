@@ -1,0 +1,45 @@
+.navbar {
+    display: flex; 
+    flex-direction: column;  
+    align-items: center; 
+    justify-content: flex-start; 
+    width: 25vw; 
+    background-color:white; 
+    height: 94vh; 
+    margin: 0; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar p {
+    margin: 0; 
+}
+.logo {
+    align-self: flex-start; 
+    margin: 5px 0px 0px 50px; 
+}
+.avatar {
+    margin-top: 15px;
+}
+ul {
+    margin-top: 50px; 
+    list-style-type: none; 
+    text-indent: -65px; 
+}
+h2 {
+    font-family: 'Roboto', 'sans-serif';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 47px;
+    font-size: 40px;
+    color: black;
+}
+ul li{
+    padding: 20px; 
+}
+ul li p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 35px;
+    font-size: 30px;
+    color: #4A4A4A;
+}

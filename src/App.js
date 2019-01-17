@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar/Navbar'; 
+import Topbar from './components/Topbar/Topbar'; 
+import Content from './components/Content/content';
+import Background from './assets/backgroundImage.png'; 
+import { CCSTransition, TransitionGroup } from 'react-transition-group';
 
 class App extends Component {
   render() {
+
+    const background = {
+      backgroundImage: `url(${Background})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'right bottom'
+    }; 
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div 
+          className="App"
+          style={background}>
+          <Topbar 
+            className="TopBar" />
+          <div 
+            className="BodyContent">
+          <Navbar 
+            className="NavBar"
+            />
+          <Content />
+        </div>
       </div>
     );
   }
