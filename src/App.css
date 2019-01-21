@@ -1,43 +1,44 @@
 .App {
-    display: grid; 
-    background-color: #EDEAF7;
-    align-items: stretch;
+  display: grid;
+  background-color: #edeaf7;
+  align-items: stretch;
 }
-.NavBar{
-    grid-column-start: 1;
-    
+.NavBar {
+  grid-column-start: 1;
 }
 .BodyContent {
-    display: grid; 
-    grid-template-columns: 25% auto;
-    grid-column-gap:200px;
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-column-gap: 125px;
 }
-
-.fade-appear, 
+.fade-appear,
 .fade-enter {
-    opacity: 0; 
-    z-index: -1; 
+  opacity: 0;
+  z-index: -1;
 }
-.fade-appear-active, 
+.fade-appear-active,
 .fade-enter.fade-enter-active {
-    opacity: 1; 
-    transition: opacity 300ms linear 150ms; 
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
 }
 .fade-exit {
-    opacity: 1; 
+  opacity: 1;
 }
 .fade-exit.fade-exit-active {
-    opacity: 0; 
-    transition: opacity 200ms linear; 
+  opacity: 0;
+  transition: opacity 200ms linear;
 }
 .ContentCard {
-    background-color: white; 
-    padding: 50px;
-    height: 65vh; 
-    width: 50vw;
-    margin-top: 75px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 50px;
+  height: 65vh;
+  width: 50vw;
+  margin-top: 75px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .Content {
-    position: absolute;    
+  position: absolute;
+}
+h2 {
+  max-width: 35vw;
 }

@@ -1,11 +1,8 @@
 .topbar {
-    background-color: white; 
-    display: flex;
-    justify-content: center;
-    flex-direction: row;   
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-p {
-    margin: 0px 50px 0px 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
