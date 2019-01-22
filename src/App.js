@@ -6,6 +6,7 @@ import Content from './components/Content/content';
 import Background from './assets/backgroundImage.png'; 
 import { CCSTransition, TransitionGroup } from 'react-transition-group';
 
+
 class App extends Component {
   render() {
 

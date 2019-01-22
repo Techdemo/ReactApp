@@ -7,8 +7,7 @@ export class Register extends Component {
     step: 1,
     Type: "",
     Title: "",
-    Description: "",
-    PerformerArray: []
+    Description: ""
     // Met index kun je ook met elkaar linken.
   };
 
@@ -46,7 +45,7 @@ export class Register extends Component {
             handleChange={this.handleChange}
             values={values}
           />
-        );
+        );    
       case 2:
         return (
           <Details
@@ -54,7 +53,6 @@ export class Register extends Component {
             handleChange={this.handleChange}
             values={values}
             open={this.open}
-            handleCreatePerformer={this.handleCreatePerformer}
           />
         );
       case 3:

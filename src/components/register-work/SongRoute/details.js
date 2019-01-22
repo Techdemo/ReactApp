@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
 import Fab from "material-ui/FloatingActionButton";
 import AddIcon from "material-ui/svg-icons/content/add";
 import Dialog from "material-ui/Dialog";
@@ -10,6 +8,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
+import PerformerListItem from './Performer'
+import LabelListItem from './Label'; 
+import RaisedButton from "material-ui/RaisedButton";
+
+
 
 export class Details extends Component {
   state = {
@@ -22,6 +25,10 @@ export class Details extends Component {
     this.props.nextStep();
   };
 
+  handleChange = input => e => {
+    this.setState({ [input]: e.target.value });
+  };
+
   // Handle dialog open
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -32,13 +39,13 @@ export class Details extends Component {
 
   handleCreatePerformer = () => {
     const performer = this.state.PerformerArray;
-    performer.push(<h1>een extra performer</h1>);
+    performer.push(<PerformerListItem handleChange={this.handleChange} />);
     this.setState({ PerformerArray: performer, open: false });
   };
 
   handleCreateLabel = () => {
     const label = this.state.LabelArray;
-    label.push(<h1>een extra label</h1>);
+    label.push(<LabelListItem />);
     this.setState({ LabelArray: label, open: false });
   };
 
@@ -56,14 +63,13 @@ export class Details extends Component {
           <h2>Performers</h2>
           <p>here you can add performers</p>
           {this.state.PerformerArray.map((performer, index) => {
-            return <div key={index}>{performer}</div>;
+            return <PerformerListItem key={index}>{performer}</PerformerListItem>;
           })}
-          <h2>Labels & Publishers</h2>
+          <h2>Labels and Publishers</h2>
           {this.state.LabelArray.map((label, index) => {
-            return <div key={index}>{label}</div>;
+            return <LabelListItem key={index}>{label}</LabelListItem>;
           })}
-
-          <Fab onClick={this.handleClickOpen}>
+          <Fab className="Fab" onClick={this.handleClickOpen}>   
             <AddIcon />
           </Fab>
           <Dialog open={this.state.open} onClose={this.handleClose}>
@@ -92,10 +98,23 @@ export class Details extends Component {
               </Button>
             </DialogActions>
           </Dialog>
+          <RaisedButton
+            label="continue"
+            primary={true}
+            style={styles.button}
+            onClick={this.continue}
+          />
         </React.Fragment>
       </MuiThemeProvider>
     );
   }
 }
+
+
+const styles = {
+  button: {
+    margin: 15
+  }
+};
 
 export default Details;
