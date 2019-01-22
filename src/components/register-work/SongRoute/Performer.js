@@ -6,47 +6,45 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from "material-ui/svg-icons/content/add";
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import details from './details'; 
+import Button from "@material-ui/core/Button";
 
 class PerformerListItem extends React.Component {
-  state = {
-    name: "",
-    instrument: 'What was your role in this song?', 
-    share: 0
-  }
-  handleChangeInstrument = instrument => event => {
-    this.setState ({
-      [instrument]: event.target.value
-    })
-  }; 
-  
+
   render (){
-    const { Type, Title, Description, Name } = this.state;
-    const { values, handleChange } = this.props;
+    const {
+      values,
+      handleChange,
+      handleClickOpen,
+      handleClose,
+      handlePerformerAdd, 
+      prevStep, 
+      nextStep, 
+      handleCreatePerformer, 
+      performerName, 
+      handleChangePush
+    } = this.props;
     return (
-     
-      <Paper className="performerCard">
-        <TextField
-          hintText="Insert name of performer"
-          floatingLabelText="insert name of perfomer"
-          onChange={handleChange("Name")}
-          defaultValue={values.Name}
-        />
-        <select>
-          <option value="">Insert your role</option>
-          <option value="arranger">Arranger</option>
-          <option value="lyricist">Lyricist</option>
-          <option value="fiets">Composer</option>
-          <option value="fiets">Instrumentalist</option>
-        </select>
-        <TextField 
-          hintText="insert your share in percentages"
-          floatingLabelText="in what percentage do you share the composition"
-          type="number"
-        />
-        <IconButton aria-label="delete"> 
-          <DeleteIcon />
-        </IconButton>
-      </Paper>
+      <div className="Paper">
+      <TextField
+        onChange={handleChange("performerArray.performerItem.name")}
+        floatingLabelText="name of performer"
+        hintText="enter name of performer"
+        defaultValue={values.performerArray.name}
+      />
+
+      <select>
+        <option value="">Insert your role</option>
+        <option value="arranger">Arranger</option>
+        <option value="lyricist">Lyricist</option>
+        <option value="fiets">Composer</option>
+        <option value="fiets">Instrumentalist</option>
+      </select>
+      <TextField 
+        hintText="insert your share in percentages"
+        floatingLabelText="share of rights"
+        type="number"
+      />
+    </div>
     )
   }
 }

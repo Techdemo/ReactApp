@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Choice from "./SongRoute/Choice";
 import Details from "./SongRoute/details";
+import PerformerListItem from "./SongRoute/Performer"
 
 export class Register extends Component {
   state = {
@@ -8,7 +9,11 @@ export class Register extends Component {
     Type: "",
     Title: "",
     Description: "",
-    Name: ""
+    Name: "", 
+    open: false, 
+    performerArray: [
+    ], 
+    performerName: [], 
     // Met index kun je ook met elkaar linken.
   };
 
@@ -33,10 +38,40 @@ export class Register extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+  // open Fab icon dialog 
+  handleClickOpen = () => {
+    const { open } = this.state;
+    this.setState({ open: true });
+  };
+
+  // closes fab dialog 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleCreatePerformer = () => {
+    const performerItem = {
+      performerItem: {
+       name: "",
+        role: "", 
+       share: 0
+    }
+    };
+    const performer = this.state.performerArray;
+    performer.push(new Object(performerItem));
+    this.setState({ open: false });
+  };
+
+  handleChangePush = input => e => {
+    const performer = this.state.performerArray.name;
+    performer.push({ [input]: e.target.value });
+  };
+
+
   render() {
     const { step } = this.state;
-    const { Type, Title, Description, Name } = this.state;
-    const values = { Type, Title, Description, Name };
+    const { Type, Title, Description, Name, open, performerArray, performerName, performerItem } = this.state;
+    const values = { Type, Title, Description, Name, open, performerArray, performerName, performerItem };
 
     switch (step) {
       case 1:
@@ -51,13 +86,17 @@ export class Register extends Component {
         return (
           <Details
             nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
-            open={this.open}
+            handleClickOpen={this.handleClickOpen}
+            handleClose={this.handleClose}
+            handleCreatePerformer={this.handleCreatePerformer}
+            handleChangePush={this.handleChangePush}
           />
         );
       case 3:
-        return <h1>Description</h1>;
+        return <h1>Case 3</h1>;
       case 4:
         return <h1>Details</h1>;
       case 5:
