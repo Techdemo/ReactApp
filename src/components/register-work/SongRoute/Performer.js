@@ -18,18 +18,18 @@ class PerformerListItem extends React.Component {
       [instrument]: event.target.value
     })
   }; 
-  handleChange = input => e => {
-    this.setState({ [input]: e.target.value });
-  };
   
   render (){
-  
+    const { Type, Title, Description, Name } = this.state;
+    const { values, handleChange } = this.props;
     return (
+     
       <Paper className="performerCard">
         <TextField
-        hintText="Insert name of performer"
-        floatingLabelText="insert name of perfomer"
-        onChange={this.handleChange("name")}
+          hintText="Insert name of performer"
+          floatingLabelText="insert name of perfomer"
+          onChange={handleChange("Name")}
+          defaultValue={values.Name}
         />
         <select>
           <option value="">Insert your role</option>

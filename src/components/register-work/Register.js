@@ -7,7 +7,8 @@ export class Register extends Component {
     step: 1,
     Type: "",
     Title: "",
-    Description: ""
+    Description: "",
+    Name: ""
     // Met index kun je ook met elkaar linken.
   };
 
@@ -34,8 +35,8 @@ export class Register extends Component {
 
   render() {
     const { step } = this.state;
-    const { Type, Title, Description } = this.state;
-    const values = { Type, Title, Description };
+    const { Type, Title, Description, Name } = this.state;
+    const values = { Type, Title, Description, Name };
 
     switch (step) {
       case 1:
