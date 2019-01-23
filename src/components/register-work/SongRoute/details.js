@@ -10,38 +10,40 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import TextField from "material-ui/TextField";
-import PerformerListItem from './Performer'
+import PerformerListItem from "./Performer";
 
 export class Details extends Component {
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
-  };  
-  
+  };
+
   render() {
     const {
       values,
       handleChange,
       handleClickOpen,
       handleClose,
-      handlePerformerAdd, 
-      prevStep, 
-      nextStep, 
-      handleCreatePerformer, 
+      handlePerformerAdd,
+      prevStep,
+      nextStep,
+      handleCreatePerformer,
       handleChangePush
     } = this.props;
-
-
 
     return (
       <MuiThemeProvider>
         <React.Fragment>
           <h2>Performers</h2>
-          <p>add a performer or a label to: <b>{values.Title}</b>, with the description: <b>{values.Description}</b></p>
-          <Fab 
-            className="Fab" 
+          <p>
+            add a performer or a label to: <b>{values.Title}</b>, with the
+            description: <b>{values.Description}</b>
+          </p>
+          <Fab
+            className="Fab"
             defaultValue={values.open}
-            onClick={handleClickOpen}>   
+            onClick={handleClickOpen}
+          >
             <AddIcon />
           </Fab>
           <Dialog open={values.open}>
@@ -53,48 +55,44 @@ export class Details extends Component {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button color="primary" onClick={handleCreatePerformer} >
+              <Button color="primary" onClick={handleCreatePerformer}>
                 Performer
               </Button>
-              <Button color="primary">
-                Record label
-              </Button>
-              <Button color="primary">
-                publisher
-              </Button>
+              <Button color="primary">Record label</Button>
+              <Button color="primary">publisher</Button>
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
             </DialogActions>
           </Dialog>
 
-          {values.performerArray.map((performer, index) => {
-            return <PerformerListItem 
-            key={index}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            handleChange={handleChange}
-            values={values}
-            handleClickOpen={handleClickOpen}
-            handleClose={handleClose}
-            handleCreatePerformer={handleCreatePerformer}
-            handleChangePush={handleChangePush}>
-            </PerformerListItem>;
+          {values.performerArray.map((performerArray, index) => {
+            return (
+              <PerformerListItem
+                key={index}
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleChange={handleChange}
+                values={values}
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+                handleCreatePerformer={handleCreatePerformer}
+                handleChangePush={handleChangePush}
+              />
+            );
           })}
-
-        <RaisedButton
-          label="continue"
-          primary={true}
-          style={styles.button}
-          onClick={nextStep}
+          <RaisedButton
+            label="continue"
+            primary={true}
+            style={styles.button}
+            onClick={nextStep}
           />
-        <RaisedButton
-          label="previous"
-          primary={true}
-          style={styles.button}
-          onClick={prevStep}
+          <RaisedButton
+            label="previous"
+            primary={true}
+            style={styles.button}
+            onClick={prevStep}
           />
-
         </React.Fragment>
       </MuiThemeProvider>
     );
@@ -106,7 +104,5 @@ const styles = {
     margin: 15
   }
 };
-
-
 
 export default Details;

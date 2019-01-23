@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Choice from "./SongRoute/Choice";
 import Details from "./SongRoute/details";
-import PerformerListItem from "./SongRoute/Performer"
+import PerformerListItem from "./SongRoute/Performer";
 
 export class Register extends Component {
   state = {
@@ -9,11 +9,9 @@ export class Register extends Component {
     Type: "",
     Title: "",
     Description: "",
-    Name: "", 
-    open: false, 
-    performerArray: [
-    ], 
-    performerName: [], 
+    open: false,
+    performerArray: [],
+    performerName: []
     // Met index kun je ook met elkaar linken.
   };
 
@@ -38,40 +36,77 @@ export class Register extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  // open Fab icon dialog 
+  // open Fab icon dialog
   handleClickOpen = () => {
     const { open } = this.state;
     this.setState({ open: true });
   };
 
-  // closes fab dialog 
+  // closes fab dialog
   handleClose = () => {
     this.setState({ open: false });
   };
 
+  //students = [student:{name: "marcel"}, student:{name:"Laurens"}]
   handleCreatePerformer = () => {
+    //--- herschrijven als een loop, dus per card ----//
     const performerItem = {
-      performerItem: {
-       name: "",
-        role: "", 
-       share: 0
-    }
+      name: "",
+      role: "",
+      share: 0
     };
-    const performer = this.state.performerArray;
-    performer.push(new Object(performerItem));
+    // onderstaande regel verwijderen
+    const performers = this.state.performerArray;
+
+    performers.push(performerItem);
+    //---- eind loopje ---- //
+
+    // performerarray vervangen door de state array whatever dat mag heten
+    // performers.concat(performers);
     this.setState({ open: false });
   };
 
   handleChangePush = input => e => {
-    const performer = this.state.performerArray.name;
-    performer.push({ [input]: e.target.value });
+    let perfArr = { ...this.state.performerArray };
+    console.log(perfArr);
+    this.setState({ [input]: e.target.value });
+    // perfArr.name = input;
+    // this.setState({ name: [input] });
+    // console.log(...perfArr);
+    // const performer = this.state.performerArray.performerItem.name;
+    // performer.push({ [input]: e.target.value });
+    // array.find op index. Zodat je weet welke performerItem er wordt aangepast.
   };
 
+  // handleChangePush = input => e => {
+  //   let perfArr = {...this.state.performerArray};
+  //
+  //
+  //   this.setState({
+  //     [e.target.name]: { ...perfArr, name: { [input]: e.target.name } }
+  //   });
+  // };
 
   render() {
     const { step } = this.state;
-    const { Type, Title, Description, Name, open, performerArray, performerName, performerItem } = this.state;
-    const values = { Type, Title, Description, Name, open, performerArray, performerName, performerItem };
+    const {
+      Type,
+      Title,
+      Description,
+      open,
+      performerArray,
+      performerName,
+      performerItem
+    } = this.state;
+    const values = {
+      Type,
+      Title,
+      Description,
+      open,
+      performerArray,
+      performerName,
+      performerItem
+    };
 
     switch (step) {
       case 1:
@@ -81,7 +116,7 @@ export class Register extends Component {
             handleChange={this.handleChange}
             values={values}
           />
-        );    
+        );
       case 2:
         return (
           <Details
