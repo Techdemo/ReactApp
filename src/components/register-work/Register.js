@@ -46,46 +46,44 @@ export class Register extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-
-  //students = [student:{name: "marcel"}, student:{name:"Laurens"}]
   handleCreatePerformer = () => {
-    //--- herschrijven als een loop, dus per card ----//
     const performerItem = {
       name: "",
       role: "",
       share: 0
     };
-    // onderstaande regel verwijderen
     const performers = this.state.performerArray;
-
     performers.push(performerItem);
-    //---- eind loopje ---- //
-
-    // performerarray vervangen door de state array whatever dat mag heten
-    // performers.concat(performers);
     this.setState({ open: false });
   };
 
-  handleChangePush = input => e => {
-    let perfArr = { ...this.state.performerArray };
-    console.log(perfArr);
-    this.setState({ [input]: e.target.value });
-    // perfArr.name = input;
-    // this.setState({ name: [input] });
-    // console.log(...perfArr);
-    // const performer = this.state.performerArray.performerItem.name;
-    // performer.push({ [input]: e.target.value });
-    // array.find op index. Zodat je weet welke performerItem er wordt aangepast.
-  };
+  handleChangePush = (index, target, value, input) => e => {
+    let perfArr = this.state.performerArray;
+    let artist = this.state.performerArray[index];
+    console.log("value", value);
+    console.log("e", e);
+    console.log("target", target);
+    console.log("artist", artist);
 
-  // handleChangePush = input => e => {
-  //   let perfArr = {...this.state.performerArray};
-  //
-  //
-  //   this.setState({
-  //     [e.target.name]: { ...perfArr, name: { [input]: e.target.name } }
-  //   });
-  // };
+    // let artistname = artist[index][value];
+    // console.log(artistname);
+
+    // console.log("this.state.performerArray", this.state.performerArray);
+
+    // this.state.performerArray[index][value] = "Gijs";
+
+    // this.setState({ [index]: index, [value]: artist, [input]: e.target.value });
+    // this.setState({
+    //
+    // })
+    // handleChange = input => e => {
+    //   this.setState({ [input]: e.target.value });
+    // };
+    // this.setState({
+    //   [input]: this.state.performerArray[value]
+    // });
+    this.setState({ name: e.target.value });
+  };
 
   render() {
     const { step } = this.state;
@@ -128,6 +126,7 @@ export class Register extends Component {
             handleClose={this.handleClose}
             handleCreatePerformer={this.handleCreatePerformer}
             handleChangePush={this.handleChangePush}
+            handleConfirmCreator={this.handleConfirmCreator}
           />
         );
       case 3:

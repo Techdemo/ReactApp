@@ -28,7 +28,9 @@ export class Details extends Component {
       prevStep,
       nextStep,
       handleCreatePerformer,
-      handleChangePush
+      handleChangePush,
+      handleConfirmCreator,
+      handleNameChange
     } = this.props;
 
     return (
@@ -70,6 +72,7 @@ export class Details extends Component {
             return (
               <PerformerListItem
                 key={index}
+                index={index}
                 nextStep={nextStep}
                 prevStep={prevStep}
                 handleChange={handleChange}
@@ -78,12 +81,14 @@ export class Details extends Component {
                 handleClose={handleClose}
                 handleCreatePerformer={handleCreatePerformer}
                 handleChangePush={handleChangePush}
+                handleNameChange={handleNameChange}
               />
             );
           })}
           <RaisedButton
-            label="continue"
+            label="Next Step"
             primary={true}
+            // onClick={handleConfirmCreator}
             style={styles.button}
             onClick={nextStep}
           />

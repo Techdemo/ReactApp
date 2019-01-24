@@ -20,16 +20,20 @@ class PerformerListItem extends React.Component {
       nextStep,
       handleCreatePerformer,
       performerName,
-      handleChangePush
+      handleChangePush,
+      handleConfirmCreator,
+      handleNameChange
     } = this.props;
+
+    // console.log(this.props);
+    let valueProps = this.props.values.performerArray;
+    console.log("props values", valueProps);
     return (
       <div className="Paper">
         <TextField
-          onChange={handleChangePush}
+          onChange={handleChangePush(this.props.index, "name")}
           floatingLabelText="name of performer"
-          hintText="enter name of performer"
-          // defaultValue={values.performerArray}
-          // defaultValue={values.performerArray.performerItem}
+          value={this.props.values.name}
         />
         <select>
           <option value="">Insert your role</option>
