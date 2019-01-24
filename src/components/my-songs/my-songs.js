@@ -1,43 +1,86 @@
-// import React, { Component } from "react";
-//
-// export class Songs extends Component {
+import React from 'react';
+
+import axios from 'axios';
+
+export default class Songs extends React.Component {
+  state = {
+    songs: ""
+  }
+
+  componentDidMount() {
+    axios.get(`http://api.discogs.com/artists/35301/releases`)
+      .then(res => {
+        const songs = res.data.releases;    
+        const songArray = Object.keys(songs).map( i => songs[i]);
+        const songState = {...songArray}
+        this.setState({ song: songState });
+        console.log(this.state.song[0].title)
+      })
+  }
+
+  render() {
+    return (
+    <div>
+      <ul>
+        { this.state.song.map(song => <li>{song}</li>)}
+      </ul>
+      </div>
+    )
+  }
+}
+
+
+
+
+
+// import React, { Component } from 'react';
+
+// class Songs extends Component {
 //   constructor() {
 //     super();
 //     this.state = {
 //       songs: [],
 //     };
-//
+
 //   }
-//
+
 //   componentDidMount() {
-//     fetch(
-//       "/2.0/?method=artist.gettoptracks&artist=cher&api_key=119bb6505a324ff18e87c96e272b28ce&format=json"
-//     ).then(results => {
-//         return results.json();
-//       }).then(data => {
-//         let songs = data.results.map((artist => {
-//           return (
-//             <div key={artist.results}>
-//               <p>hallo</p>
-//             </div>
+
+//     fetch('http://api.discogs.com/artists/35301/releases')
+//     .then(results => {
+//       return results.json();
+//     }).then(data => {
+//       // let stats = {...data.releases}
+//       // console.log("data", data)
+//       console.log("releases", data.releases[0])
+//       // console.log(stats)
+//       let songs = data.releases.map((songItem, i) => {
+//         return(
+          
+//             <p key={i}>{songItem.releases}</p>
+      
 //           )
-//         })
-//         this.setState({ songs: songs });
-//         console.log("state", this.state.songs);
-//       });
+//       })
+//       this.setState({songs: songs});
+      
+//     })
 //   }
-//
 //   render() {
-//     return <div>{this.state.songs}</div>;
+//     return(
+
+//       <div>
+//         <div>
+//         {this.state.releases}
+//         </div>
+//       </div>
+//     )
 //   }
-//
-//   // API key	119bb6505a324ff18e87c96e272b28ce
-//   // Shared secret	69b8cb14286bd33bb59e2eb1efe22839
+
+
 // }
 // export default Songs;
-
-import React from "react";
-let songs = () => {
-  return <h2>My Songs</h2>;
-};
-export default songs;
+// import React from "react";
+// let songs = () => {
+//   return <h2>My Songs</h2>;
+// };
+// export default songs;

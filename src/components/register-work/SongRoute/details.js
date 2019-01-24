@@ -88,7 +88,6 @@ export class Details extends Component {
           <RaisedButton
             label="Next Step"
             primary={true}
-            // onClick={handleConfirmCreator}
             style={styles.button}
             onClick={nextStep}
           />
