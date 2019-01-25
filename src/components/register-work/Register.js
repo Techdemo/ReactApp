@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Choice from "./SongRoute/Choice";
 import Details from "./SongRoute/details";
 import PerformerListItem from "./SongRoute/Performer";
+import Revenue from "../check-revenue/revenue";
 
 export class Register extends Component {
   state = {
@@ -11,7 +12,8 @@ export class Register extends Component {
     Description: "",
     open: false,
     performerArray: [],
-    performerName: []
+    performerName: [],
+    labelArray: []
     // Met index kun je ook met elkaar linken.
   };
 
@@ -57,6 +59,17 @@ export class Register extends Component {
     this.setState({ open: false });
   };
 
+  handleCreateLabel = () => {
+    const labelItem = {
+      name: "",
+      role: "",
+      share: 0
+    };
+    const labels = this.state.labelArray;
+    labels.push(labelItem);
+    this.setState({ open: false });
+  };
+
   handleChangePush = (index, target, value, input) => e => {
     let perfArr = this.state.performerArray;
     let artist = this.state.performerArray[index];
@@ -94,7 +107,8 @@ export class Register extends Component {
       open,
       performerArray,
       performerName,
-      performerItem
+      performerItem,
+      labelArray
     } = this.state;
     const values = {
       Type,
@@ -103,7 +117,8 @@ export class Register extends Component {
       open,
       performerArray,
       performerName,
-      performerItem
+      performerItem,
+      labelArray
     };
 
     switch (step) {
@@ -127,10 +142,11 @@ export class Register extends Component {
             handleCreatePerformer={this.handleCreatePerformer}
             handleChangePush={this.handleChangePush}
             handleConfirmCreator={this.handleConfirmCreator}
+            handleCreateLabel={this.handleCreateLabel}
           />
         );
       case 3:
-        return <h1>Case 3</h1>;
+        return <Revenue />;
       case 4:
         return <h1>Details</h1>;
       case 5:

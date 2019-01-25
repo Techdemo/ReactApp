@@ -11,6 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import TextField from "material-ui/TextField";
 import PerformerListItem from "./Performer";
+import LabelItem from "./Label";
 
 export class Details extends Component {
   continue = e => {
@@ -30,7 +31,8 @@ export class Details extends Component {
       handleCreatePerformer,
       handleChangePush,
       handleConfirmCreator,
-      handleNameChange
+      handleNameChange,
+      handleCreateLabel
     } = this.props;
 
     return (
@@ -60,7 +62,9 @@ export class Details extends Component {
               <Button color="primary" onClick={handleCreatePerformer}>
                 Performer
               </Button>
-              <Button color="primary">Record label</Button>
+              <Button color="primary" onClick={handleCreateLabel}>
+                Record label
+              </Button>
               <Button color="primary">publisher</Button>
               <Button onClick={handleClose} color="primary">
                 Cancel
@@ -71,6 +75,25 @@ export class Details extends Component {
           {values.performerArray.map((performerArray, index) => {
             return (
               <PerformerListItem
+                key={index}
+                index={index}
+                nextStep={nextStep}
+                prevStep={prevStep}
+                handleChange={handleChange}
+                values={values}
+                handleClickOpen={handleClickOpen}
+                handleClose={handleClose}
+                handleCreatePerformer={handleCreatePerformer}
+                handleChangePush={handleChangePush}
+                handleNameChange={handleNameChange}
+              />
+            );
+          })}
+          <h2>Labels&performers</h2>
+
+          {values.labelArray.map((labelArray, index) => {
+            return (
+              <LabelItem
                 key={index}
                 index={index}
                 nextStep={nextStep}

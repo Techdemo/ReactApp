@@ -1,37 +1,29 @@
-import React from 'react';
+import React from "react";
 
-import axios from 'axios';
+import axios from "axios";
 
 export default class Songs extends React.Component {
   state = {
-    songs: ""
-  }
+    songs: []
+  };
 
   componentDidMount() {
-    axios.get(`http://api.discogs.com/artists/35301/releases`)
-      .then(res => {
-        const songs = res.data.releases;    
-        const songArray = Object.keys(songs).map( i => songs[i]);
-        const songState = {...songArray}
-        this.setState({ song: songState });
-        console.log(this.state.song[0].title)
-      })
+    axios.get("http://api.discogs.com/artists/35301/releases").then(res => {
+      const songs = res.data.releases;
+      this.setState({ songs });
+    });
   }
 
   render() {
     return (
-    <div>
       <ul>
-        { this.state.song.map(song => <li>{song}</li>)}
+        {this.state.songs.map(song => (
+          <li>{song.releases}</li>
+        ))}
       </ul>
-      </div>
-    )
+    );
   }
 }
-
-
-
-
 
 // import React, { Component } from 'react';
 
@@ -56,13 +48,13 @@ export default class Songs extends React.Component {
 //       // console.log(stats)
 //       let songs = data.releases.map((songItem, i) => {
 //         return(
-          
+
 //             <p key={i}>{songItem.releases}</p>
-      
+
 //           )
 //       })
 //       this.setState({songs: songs});
-      
+
 //     })
 //   }
 //   render() {
@@ -75,7 +67,6 @@ export default class Songs extends React.Component {
 //       </div>
 //     )
 //   }
-
 
 // }
 // export default Songs;
