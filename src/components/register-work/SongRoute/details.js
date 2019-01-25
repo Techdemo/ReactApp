@@ -89,7 +89,7 @@ export class Details extends Component {
               />
             );
           })}
-          <h2>Labels&performers</h2>
+          <h2>Labels & Publishers</h2>
 
           {values.labelArray.map((labelArray, index) => {
             return (

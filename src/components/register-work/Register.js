@@ -3,6 +3,9 @@ import Choice from "./SongRoute/Choice";
 import Details from "./SongRoute/details";
 import PerformerListItem from "./SongRoute/Performer";
 import Revenue from "../check-revenue/revenue";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
 
 export class Register extends Component {
   state = {
